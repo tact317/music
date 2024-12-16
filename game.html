@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Click Game</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1DB954, #191414);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .game-container {
+            padding: 20px;
+            margin: 20px auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            max-width: 600px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #1DB954;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #14833b;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Simple Click Game</h1>
+        <p>Click the button as many times as you can in 10 seconds!</p>
+        <button class="button" id="clickButton">Click Me!</button>
+        <p>Score: <span id="score">0</span></p>
+        <p id="message"></p>
+    </div>
+    <script>
+        let score = 0;
+        let timeLeft = 10;
+        const scoreDisplay = document.getElementById('score');
+        const messageDisplay = document.getElementById('message');
+        const clickButton = document.getElementById('clickButton');
+
+        clickButton.addEventListener('click', () => {
+            if (timeLeft > 0) {
+                score++;
+                scoreDisplay.textContent = score;
+            }
+        });
+
+        const countdown = setInterval(() => {
+            timeLeft--;
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                messageDisplay.textContent = 'Time\'s up! Your final score is ' + score;
+                clickButton.disabled = true;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
