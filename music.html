@@ -8,7 +8,7 @@
     body { background-color: black; margin: 0; padding: 0; font-family: Arial, sans-serif; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; }
     h1 { color: white; font-size: 5vw; margin-top: 20px; }
     .container { text-align: center; width: 100%; }
-    .button { display: inline-block; padding: 10px 20px; font-size: 4vw; color: white; text-align: center; text-decoration: none; border-radius: 5px; margin: 10px; }
+    .button { display: inline-block; padding: 10px 20px; font-size: 4vw; color: white; text-align: center; text-decoration: none; border-radius: 5px; margin: 10px; cursor: pointer; }
     .play { background-color: green; }
     .stop { background-color: red; }
     .resume { background-color: orange; }
@@ -18,15 +18,23 @@
     .progress { width: 50%; height: 100%; background-color: purple; border-radius: 5px; }
     @media (min-width: 600px) { .button { font-size: 2vw; } }
   </style>
+  <script>
+    function sendRequest(url) {
+      fetch(url)
+        .then(response => response.text())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+    }
+  </script>
 </head>
 <body>
   <h1>MUSIC</h1>
   <div class="container">
     <div class="track-info">Now Playing: Track Title</div>
     <div class="progress-bar"><div class="progress"></div></div>
-    <a href="http://172.20.10.12/play1" class="button play">&#x23F5;</a> <!-- 再生ボタンのアイコン -->
-    <a href="http://172.20.10.12/stop" class="button stop">&#x23F9;</a> <!-- 停止ボタンのアイコン -->
-    <a href="http://172.20.10.12/resume" class="button resume">&#x23EF;</a> <!-- 再生/一時停止ボタンのアイコン -->
+    <div class="button play" onclick="sendRequest('http://172.20.10.12/play1')">&#x23F5;</div> <!-- 再生ボタンのアイコン -->
+    <div class="button stop" onclick="sendRequest('http://172.20.10.12/stop')">&#x23F9;</div> <!-- 停止ボタンのアイコン -->
+    <div class="button resume" onclick="sendRequest('http://172.20.10.12/resume')">&#x23EF;</div> <!-- 再生/一時停止ボタンのアイコン -->
     <a href="https://tact317.github.io/music/index2.html" class="button newpage">New Page</a> <!-- 新しいページに飛ぶボタン -->
   </div>
 </body>
