@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESP32 Music Control</title>
+  <style>
+    body { background-color: black; margin: 0; padding: 0; font-family: Arial, sans-serif; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; }
+    h1 { color: white; font-size: 5vw; margin-top: 20px; }
+    .container { text-align: center; width: 100%; }
+    .button { display: inline-block; padding: 10px 20px; font-size: 4vw; color: white; text-align: center; text-decoration: none; border-radius: 5px; margin: 10px; }
+    .play { background-color: green; }
+    .stop { background-color: red; }
+    .resume { background-color: orange; }
+    .newpage { background-color: blue; }
+    .track-info { font-size: 4vw; margin: 20px 0; }
+    .progress-bar { width: 80%; height: 10px; background-color: grey; margin: 20px auto; border-radius: 5px; }
+    .progress { width: 50%; height: 100%; background-color: purple; border-radius: 5px; }
+    @media (min-width: 600px) { .button { font-size: 2vw; } }
+  </style>
+</head>
+<body>
+  <h1>MUSIC</h1>
+  <div class="container">
+    <div class="track-info">Now Playing: Track Title</div>
+    <div class="progress-bar"><div class="progress"></div></div>
+    <a href="/play1" class="button play">&#x23F5;</a> <!-- 再生ボタンのアイコン -->
+    <a href="/stop" class="button stop">&#x23F9;</a> <!-- 停止ボタンのアイコン -->
+    <a href="/resume" class="button resume">&#x23EF;</a> <!-- 再生/一時停止ボタンのアイコン -->
+    <a href="/newpage" class="button newpage">New Page</a>
+  </div>
+</body>
+</html>
