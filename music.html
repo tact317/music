@@ -32,10 +32,20 @@
 
   <script>
     function navigateAndReturn(url) {
-      window.location.href = url;
-      setTimeout(() => {
-        window.location.href = '/';
-      }, 100); // 100ミリ秒後にホームに戻る
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(data => {
+          console.log(data);
+          setTimeout(() => {
+            window.location.href = '/';
+          }, 100); // 100ミリ秒後にホームに戻る
+        })
+        .catch(error => console.error('Fetch error:', error));
     }
   </script>
 </body>
