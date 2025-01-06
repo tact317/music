@@ -24,10 +24,19 @@
   <div class="container">
     <div class="track-info">Now Playing: Track Title</div>
     <div class="progress-bar"><div class="progress"></div></div>
-    <a href="http://172.20.10.12/play1" class="button play">&#x23F5;</a> <!-- 再生ボタンのアイコン -->
-    <a href="http://172.20.10.12/stop" class="button stop">&#x23F9;</a> <!-- 停止ボタンのアイコン -->
-    <a href="http://172.20.10.12/resume" class="button resume">&#x23EF;</a> <!-- 再生/一時停止ボタンのアイコン -->
+    <a href="#" class="button play" onclick="sendCommand('play1')">&#x23F5;</a> <!-- 再生ボタンのアイコン -->
+    <a href="#" class="button stop" onclick="sendCommand('stop')">&#x23F9;</a> <!-- 停止ボタンのアイコン -->
+    <a href="#" class="button resume" onclick="sendCommand('resume')">&#x23EF;</a> <!-- 再生/一時停止ボタンのアイコン -->
     <a href="https://tact317.github.io/music/index2.html" class="button newpage">New Page</a> <!-- 新しいページに飛ぶボタン -->
   </div>
+
+  <script>
+    function sendCommand(command) {
+      fetch(`http://172.20.10.12/${command}`)
+        .then(response => response.text())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+    }
+  </script>
 </body>
 </html>
