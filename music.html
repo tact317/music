@@ -18,27 +18,23 @@
     .progress { width: 50%; height: 100%; background-color: purple; border-radius: 5px; }
     @media (min-width: 600px) { .button { font-size: 2vw; } }
   </style>
-  <script>
-    function sendRequest(url) {
-      fetch(url)
-        .then(response => response.text())
-        .then(data => {
-          console.log(data);
-          window.location.href = '/'; // ホームページにリダイレクト
-        })
-        .catch(error => console.error('Error:', error));
-    }
-  </script>
 </head>
 <body>
   <h1>MUSIC</h1>
   <div class="container">
     <div class="track-info">Now Playing: Track Title</div>
     <div class="progress-bar"><div class="progress"></div></div>
-    <a href="#" class="button play" onclick="sendRequest('http://172.20.10.12/play1'); return false;">&#x23F5;</a> <!-- 再生ボタン -->
-    <a href="#" class="button stop" onclick="sendRequest('http://172.20.10.12/stop'); return false;">&#x23F9;</a> <!-- 停止ボタン -->
-    <a href="#" class="button resume" onclick="sendRequest('http://172.20.10.12/resume'); return false;">&#x23EF;</a> <!-- 再生/一時停止ボタン -->
+    <form action="http://172.20.10.12/play1" method="get" target="hiddenFrame">
+      <button type="submit" class="button play">&#x23F5;</button>
+    </form>
+    <form action="http://172.20.10.12/stop" method="get" target="hiddenFrame">
+      <button type="submit" class="button stop">&#x23F9;</button>
+    </form>
+    <form action="http://172.20.10.12/resume" method="get" target="hiddenFrame">
+      <button type="submit" class="button resume">&#x23EF;</button>
+    </form>
     <a href="https://tact317.github.io/music/index2.html" class="button newpage">New Page</a> <!-- 新しいページに飛ぶボタン -->
   </div>
+  <iframe name="hiddenFrame" style="display:none;"></iframe>
 </body>
 </html>
